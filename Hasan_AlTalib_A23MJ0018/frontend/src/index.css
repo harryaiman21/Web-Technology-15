@@ -1,0 +1,1069 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   NEXUS DESIGN SYSTEM — DHL Enterprise Edition
+   Dark: Charcoal surfaces, DHL Red = urgency, DHL Yellow = intelligence
+   Light: White corporate, DHL Red sidebar, DHL Yellow accents
+   ========================================================================== */
+
+:root {
+  /* ── Core Surfaces (charcoal, not midnight blue) ────────────────────────── */
+  --nexus-bg:        #0f0f0f;
+  --nexus-surface-1: #161616;
+  --nexus-surface-2: #1e1e1e;
+  --nexus-surface-3: #272727;
+  --nexus-elevated:  #303030;
+  --nexus-border:    rgba(255, 255, 255, 0.07);
+  --nexus-border-bright: rgba(255, 255, 255, 0.13);
+
+  /* ── Text ───────────────────────────────────────────────────────────────── */
+  --nexus-text-1:  #f5f5f5;
+  --nexus-text-2:  #a0a0a0;
+  --nexus-text-3:  #5a5a5a;
+
+  /* ── DHL Brand Palette ──────────────────────────────────────────────────── */
+  --nexus-red:      #D40511;
+  --nexus-red-dim:  rgba(212, 5, 17, 0.14);
+  --nexus-cyan:     #FFCC00;              /* DHL Yellow — primary accent      */
+  --nexus-cyan-dim: rgba(255, 204, 0, 0.10);
+  --nexus-electric: #FF8C00;              /* Warm orange — secondary/data     */
+  --nexus-amber:    #FFAA00;              /* Warnings                         */
+  --nexus-emerald:  #22c55e;              /* Success / resolved               */
+
+  /* ── Legacy mappings ────────────────────────────────────────────────────── */
+  --surface:      var(--nexus-bg);
+  --surface-2:    var(--nexus-surface-2);
+  --surface-3:    var(--nexus-surface-3);
+  --border:       var(--nexus-border);
+  --text-1:       var(--nexus-text-1);
+  --text-2:       var(--nexus-text-2);
+  --text-3:       var(--nexus-text-3);
+  --primary:      var(--nexus-red);
+  --primary-hover: #b8040e;
+  --accent-blue:  #3b82f6;
+  --accent-green: var(--nexus-emerald);
+  --accent-amber: var(--nexus-amber);
+  --accent-red:   #ef4444;
+  --radius-card:  10px;
+  --radius-input: 6px;
+  --radius-badge: 4px;
+
+  /* ── shadcn/radix tokens ────────────────────────────────────────────────── */
+  --background:           0 0% 6%;
+  --foreground:           0 0% 96%;
+  --card:                 0 0% 12%;
+  --card-foreground:      0 0% 96%;
+  --popover:              0 0% 12%;
+  --popover-foreground:   0 0% 96%;
+  --primary-hsl:          357 91% 43%;
+  --primary-foreground:   0 0% 100%;
+  --secondary:            0 0% 16%;
+  --secondary-foreground: 0 0% 96%;
+  --muted:                0 0% 16%;
+  --muted-foreground:     0 0% 55%;
+  --accent:               0 0% 16%;
+  --accent-foreground:    0 0% 96%;
+  --destructive:          0 84% 60%;
+  --destructive-foreground: 0 0% 96%;
+  --border-hsl:           0 0% 18%;
+  --input:                0 0% 18%;
+  --ring:                 47 100% 50%;   /* DHL Yellow focus ring */
+  --radius:               0.5rem;
+
+  /* ── Sidebar / Header / Panels ─────────────────────────────────────────── */
+  --nexus-sidebar-bg:     rgba(22, 22, 22, 0.95);
+  --nexus-header-bg:      rgba(15, 15, 15, 0.80);
+  --nexus-logo-text:      #ffffff;
+  --nexus-panel-bg:       rgba(22, 22, 22, 0.80);
+  --nexus-panel-solid:    rgba(22, 22, 22, 0.97);
+  --nexus-modal-backdrop: rgba(0, 0, 0, 0.80);
+  --nexus-page-alt:       #0a0a0a;
+}
+
+/* ==========================================================================
+   LIGHT MODE — Full DHL Corporate
+   ========================================================================== */
+
+.light {
+  /* ── Core Surfaces ──────────────────────────────────────────────────────── */
+  --nexus-bg:        #F5F5F5;
+  --nexus-surface-1: #EDEDED;
+  --nexus-surface-2: #FFFFFF;
+  --nexus-surface-3: #E8E8E8;
+  --nexus-elevated:  #DEDEDE;
+  --nexus-border:    rgba(0, 0, 0, 0.09);
+  --nexus-border-bright: rgba(0, 0, 0, 0.16);
+
+  /* ── Text ───────────────────────────────────────────────────────────────── */
+  --nexus-text-1:  #1a1a1a;
+  --nexus-text-2:  #555555;
+  --nexus-text-3:  #999999;
+
+  /* ── DHL Brand (light mode) ─────────────────────────────────────────────── */
+  --nexus-red:      #D40511;
+  --nexus-red-dim:  rgba(212, 5, 17, 0.08);
+  --nexus-cyan:     #CC9900;              /* Darker yellow — readable on white */
+  --nexus-cyan-dim: rgba(204, 153, 0, 0.10);
+  --nexus-electric: #CC5500;             /* Deeper orange for light bg        */
+  --nexus-amber:    #B8860B;
+  --nexus-emerald:  #16a34a;
+
+  /* ── Legacy mappings ───────────────────────────────────────────────────── */
+  --primary-hover: #a30310;
+  --accent-blue:  #2563eb;
+  --accent-red:   #D40511;
+
+  /* ── shadcn/radix tokens ────────────────────────────────────────────────── */
+  --background:           0 0% 96%;
+  --foreground:           0 0% 10%;
+  --card:                 0 0% 100%;
+  --card-foreground:      0 0% 10%;
+  --popover:              0 0% 100%;
+  --popover-foreground:   0 0% 10%;
+  --primary-hsl:          357 91% 42%;
+  --primary-foreground:   0 0% 100%;
+  --secondary:            0 0% 92%;
+  --secondary-foreground: 0 0% 10%;
+  --muted:                0 0% 92%;
+  --muted-foreground:     0 0% 40%;
+  --accent:               0 0% 92%;
+  --accent-foreground:    0 0% 10%;
+  --destructive:          0 84% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border-hsl:           0 0% 85%;
+  --input:                0 0% 85%;
+  --ring:                 357 91% 42%;   /* DHL Red focus ring in light mode */
+  --radius:               0.5rem;
+
+  /* ── Sidebar / Header / Panels ────────────────────────────────────────── */
+  --nexus-sidebar-bg:     #FAFAFA;       /* Off-white — DHL red kept as accent only */
+  --nexus-header-bg:      rgba(255, 255, 255, 0.92);
+  --nexus-logo-text:      #1a1a1a;
+  --nexus-panel-bg:       rgba(255, 255, 255, 0.92);
+  --nexus-panel-solid:    rgba(255, 255, 255, 0.98);
+  --nexus-modal-backdrop: rgba(26, 26, 26, 0.50);
+  --nexus-page-alt:       var(--nexus-bg);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  * {
+    border-color: var(--nexus-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-width: 375px;
+    background: var(--nexus-bg);
+    color: var(--nexus-text-1);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  [role="button"],
+  a,
+  input,
+  select,
+  textarea {
+    transition:
+      background-color 150ms ease-out,
+      border-color 150ms ease-out,
+      color 150ms ease-out,
+      box-shadow 150ms ease-out,
+      transform 150ms ease-out;
+  }
+
+  button, [role="button"] { cursor: pointer; }
+  button:disabled, input:disabled, select:disabled, textarea:disabled { cursor: not-allowed; }
+
+  :focus-visible {
+    outline: 2px solid rgba(255, 204, 0, 0.6);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(212, 5, 17, 0.18);
+    color: var(--nexus-text-1);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.18); }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+@layer utilities {
+  .font-mono-ui {
+    font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .surface-card {
+    background: var(--nexus-surface-2);
+    border: 1px solid var(--nexus-border);
+    border-radius: var(--radius-card);
+  }
+
+  .surface-input {
+    background: var(--nexus-surface-3);
+    border: 1px solid var(--nexus-border);
+    border-radius: var(--radius-input);
+  }
+
+  .text-secondary  { color: var(--nexus-text-2); }
+  .text-tertiary   { color: var(--nexus-text-3); }
+  .bg-surface      { background: var(--nexus-bg); }
+  .bg-surface-2    { background: var(--nexus-surface-2); }
+  .bg-surface-3    { background: var(--nexus-surface-3); }
+  .border-subtle   { border-color: var(--nexus-border); }
+
+  .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--nexus-surface-2) 0%,
+      var(--nexus-surface-3) 50%,
+      var(--nexus-surface-2) 100%
+    );
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.4s ease-in-out infinite;
+  }
+
+  /* Glow utilities — DHL palette */
+  .glow-cyan  { box-shadow: 0 0 24px rgba(255, 204, 0, 0.18); }
+  .glow-red   { box-shadow: 0 0 24px rgba(212, 5, 17, 0.18); }
+  .glow-amber { box-shadow: 0 0 24px rgba(255, 170, 0, 0.14); }
+  .glow-text  { text-shadow: 0 0 20px currentColor; }
+
+  .data-value {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* ==========================================================================
+   AMBIENT BACKGROUND — Subdued, professional
+   ========================================================================== */
+
+.nexus-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nexus-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 100%);
+  animation: grid-breathe 8s ease-in-out infinite;
+}
+
+@keyframes grid-breathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.nexus-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  animation: orb-drift 30s ease-in-out infinite;
+}
+
+/* DHL Yellow orb — replaces cyan */
+.nexus-orb--cyan {
+  width: 500px;
+  height: 500px;
+  top: 5%;
+  right: 10%;
+  background: rgba(255, 204, 0, 0.04);
+}
+
+.nexus-orb--red {
+  width: 350px;
+  height: 350px;
+  bottom: 15%;
+  left: 5%;
+  background: rgba(212, 5, 17, 0.04);
+  animation-delay: -12s;
+}
+
+/* Warm orange accent orb — replaces purple */
+.nexus-orb--electric {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 40%;
+  background: rgba(255, 140, 0, 0.025);
+  animation-delay: -7s;
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -25px) scale(1.08); }
+  50% { transform: translate(-25px, 35px) scale(0.95); }
+  75% { transform: translate(20px, 15px) scale(1.04); }
+}
+
+/* Scanline removed — too game-y */
+.nexus-scanline { display: none; }
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.nexus-card {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 30, 30, 0.90),
+    rgba(22, 22, 22, 0.97)
+  );
+  border: 1px solid var(--nexus-border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nexus-card:hover {
+  border-color: rgba(255, 204, 0, 0.16);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.38),
+    0 0 24px rgba(255, 204, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Gradient border mask */
+.nexus-card-glow {
+  position: relative;
+}
+
+.nexus-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 13px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 204, 0, 0.18),
+    transparent 40%,
+    transparent 60%,
+    rgba(212, 5, 17, 0.12)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.nexus-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   KPI CARDS
+   ========================================================================== */
+
+.nexus-kpi {
+  position: relative;
+  padding: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 30, 30, 0.80),
+    rgba(22, 22, 22, 0.95)
+  );
+  border: 1px solid var(--nexus-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.nexus-kpi::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--nexus-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.nexus-kpi:hover::before {
+  opacity: 1;
+}
+
+.nexus-kpi-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nexus-text-3);
+}
+
+.nexus-kpi-value {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--nexus-text-1);
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.nexus-kpi-hint {
+  font-size: 11px;
+  color: var(--nexus-text-3);
+  margin-top: 8px;
+}
+
+/* Status variants */
+.nexus-kpi.critical {
+  border-color: rgba(212, 5, 17, 0.25);
+  box-shadow: 0 0 30px rgba(212, 5, 17, 0.08);
+}
+.nexus-kpi.critical .nexus-kpi-value { color: var(--nexus-red); }
+
+.nexus-kpi.warning {
+  border-color: rgba(255, 204, 0, 0.20);
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.06);
+}
+.nexus-kpi.warning .nexus-kpi-value { color: var(--nexus-amber); }
+
+.nexus-kpi.success {
+  border-color: rgba(34, 197, 94, 0.20);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.06);
+}
+.nexus-kpi.success .nexus-kpi-value { color: var(--nexus-emerald); }
+
+/* ==========================================================================
+   PULSE ANIMATIONS
+   ========================================================================== */
+
+@keyframes nexus-critical-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 5, 17, 0.4), 0 0 40px rgba(212, 5, 17, 0.2); }
+  50% { box-shadow: 0 0 35px rgba(212, 5, 17, 0.7), 0 0 70px rgba(212, 5, 17, 0.4); }
+}
+
+@keyframes nexus-warning-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.30), 0 0 30px rgba(255, 204, 0, 0.15); }
+  50% { box-shadow: 0 0 25px rgba(255, 204, 0, 0.50), 0 0 50px rgba(255, 204, 0, 0.30); }
+}
+
+@keyframes nexus-idle-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.nexus-pulse-critical { animation: nexus-critical-pulse 1.5s ease-in-out infinite; }
+.nexus-pulse-warning  { animation: nexus-warning-pulse 2s ease-in-out infinite; }
+.nexus-pulse-idle     { animation: nexus-idle-breathe 4s ease-in-out infinite; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.nexus-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nexus-btn-primary {
+  background: linear-gradient(135deg, var(--nexus-red), #b8040e);
+  color: white;
+  box-shadow: 0 4px 16px rgba(212, 5, 17, 0.25);
+}
+
+.nexus-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(212, 5, 17, 0.38);
+}
+
+.nexus-btn-secondary {
+  background: var(--nexus-surface-2);
+  color: var(--nexus-text-1);
+  border: 1px solid var(--nexus-border);
+}
+
+.nexus-btn-secondary:hover {
+  background: var(--nexus-surface-3);
+  border-color: rgba(255, 204, 0, 0.25);
+}
+
+/* ==========================================================================
+   INPUTS
+   ========================================================================== */
+
+.nexus-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  background: var(--nexus-surface-1);
+  border: 1px solid var(--nexus-border);
+  border-radius: 8px;
+  color: var(--nexus-text-1);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.nexus-input::placeholder { color: var(--nexus-text-3); }
+
+.nexus-input:focus {
+  outline: none;
+  border-color: rgba(255, 204, 0, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.08);
+}
+
+/* ==========================================================================
+   SECTION HEADERS
+   ========================================================================== */
+
+.nexus-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.nexus-section-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nexus-cyan);
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+  animation: indicator-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes indicator-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.nexus-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nexus-cyan);
+}
+
+.nexus-section-subtitle {
+  font-size: 10px;
+  color: var(--nexus-text-3);
+}
+
+/* ==========================================================================
+   DATA FLOW ANIMATIONS
+   ========================================================================== */
+
+@keyframes data-flow {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.data-flow-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--nexus-cyan), transparent);
+  background-size: 200% 100%;
+  animation: data-flow 2s linear infinite;
+}
+
+@keyframes slide-in-glow {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+    box-shadow: 0 0 40px rgba(255, 204, 0, 0.25);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    box-shadow: 0 0 16px rgba(255, 204, 0, 0.08);
+  }
+}
+
+.action-card-enter {
+  animation: slide-in-glow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-left: 3px solid var(--nexus-cyan);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* ==========================================================================
+   STATUS INDICATORS
+   ========================================================================== */
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot--live {
+  background: var(--nexus-emerald);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+.status-dot--warning {
+  background: var(--nexus-amber);
+  box-shadow: 0 0 8px rgba(255, 170, 0, 0.55);
+  animation: status-pulse 1.5s ease-in-out infinite;
+}
+
+.status-dot--critical {
+  background: var(--nexus-red);
+  box-shadow: 0 0 8px rgba(212, 5, 17, 0.65);
+  animation: status-pulse 1s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ==========================================================================
+   CHART CUSTOMIZATIONS
+   ========================================================================== */
+
+.recharts-tooltip-wrapper { outline: none; }
+
+.nexus-chart-tooltip {
+  background: var(--nexus-surface-2) !important;
+  border: 1px solid var(--nexus-border-bright) !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.recharts-legend-wrapper { padding-top: 16px !important; }
+.recharts-legend-item-text { color: var(--nexus-text-2) !important; font-size: 12px !important; }
+
+/* ==========================================================================
+   OPSCHAT KEYFRAMES
+   ========================================================================== */
+
+@keyframes opsIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes opsPulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes opsSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   GENERAL KEYFRAMES
+   ========================================================================== */
+
+@keyframes loading-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes nexus-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.nexus-fade-in { animation: nexus-fade-in 0.5s ease-out; }
+.nexus-glow-text { text-shadow: 0 0 20px currentColor; }
+.nexus-border-glow { box-shadow: 0 0 20px rgba(255, 204, 0, 0.15); }
+
+/* ==========================================================================
+   LIVE FEED ENTRIES
+   ========================================================================== */
+
+.feed-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  animation: feed-enter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.15s ease;
+}
+
+.feed-entry:hover {
+  background: rgba(255, 204, 0, 0.04);
+}
+
+@keyframes feed-enter {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feed-entry__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.feed-entry__time {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--nexus-text-3);
+  flex-shrink: 0;
+  min-width: 52px;
+}
+
+.feed-entry__text {
+  font-size: 12px;
+  color: var(--nexus-text-2);
+  line-height: 1.5;
+}
+
+.feed-entry__text strong {
+  color: var(--nexus-text-1);
+  font-weight: 600;
+}
+
+.feed-entry__text .agent-name {
+  color: var(--nexus-cyan);
+  font-weight: 600;
+}
+
+.feed-entry__text .value-highlight {
+  color: var(--nexus-emerald);
+  font-weight: 600;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   SIDEBAR NAV
+   ========================================================================== */
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--nexus-text-3);
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--nexus-text-2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-nav-item--active {
+  color: var(--nexus-text-1);
+  font-weight: 600;
+  background: var(--nexus-cyan-dim);
+  border-color: rgba(255, 204, 0, 0.14);
+}
+
+.sidebar-nav-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  background: var(--nexus-cyan);
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.45);
+}
+
+.sidebar-nav-item--active .sidebar-nav-icon {
+  color: var(--nexus-cyan);
+}
+
+.sidebar-section-label {
+  padding: 16px 12px 6px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--nexus-text-3);
+}
+
+/* ==========================================================================
+   CONFIDENCE RING
+   ========================================================================== */
+
+.confidence-ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confidence-ring__track {
+  fill: none;
+  stroke: var(--nexus-border);
+  stroke-width: 3;
+}
+
+.confidence-ring__fill {
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease, stroke 0.5s ease;
+}
+
+.confidence-ring__value {
+  position: absolute;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .nexus-kpi-value { font-size: 28px; }
+  .nexus-section-title { font-size: 10px; }
+}
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES — Full DHL Corporate
+   ========================================================================== */
+
+.light html,
+html.light {
+  color-scheme: light;
+}
+
+/* Hide ambient effects entirely in light mode — clean corporate */
+.light .nexus-ambient { display: none; }
+
+/* Cards — clean white with subtle shadow */
+.light .nexus-card {
+  background: #FFFFFF;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.07),
+    0 4px 16px rgba(0, 0, 0, 0.05);
+}
+.light .nexus-card:hover {
+  border-color: rgba(212, 5, 17, 0.20);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.10),
+    0 0 20px rgba(212, 5, 17, 0.05);
+}
+
+/* Card glow — red/yellow in light mode */
+.light .nexus-card-glow::before {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 5, 17, 0.15),
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 204, 0, 0.10)
+  );
+}
+
+/* KPI cards */
+.light .nexus-kpi {
+  background: #FFFFFF;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.light .nexus-kpi::before {
+  background: linear-gradient(90deg, var(--nexus-red), transparent);
+}
+
+/* Buttons */
+.light .nexus-btn-secondary {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+}
+.light .nexus-btn-secondary:hover {
+  background: #F5F5F5;
+  border-color: rgba(212, 5, 17, 0.30);
+}
+
+/* Inputs */
+.light .nexus-input {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.14);
+}
+.light .nexus-input:focus {
+  border-color: rgba(212, 5, 17, 0.50);
+  box-shadow: 0 0 0 3px rgba(212, 5, 17, 0.08);
+}
+
+/* Chart tooltip */
+.light .nexus-chart-tooltip {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10) !important;
+}
+
+/* Surface utilities */
+.light .surface-card {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Scrollbars */
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+/* Selection — DHL Red */
+.light ::selection {
+  background: rgba(212, 5, 17, 0.14);
+  color: #1a1a1a;
+}
+
+/* Focus ring — DHL Red in light mode */
+.light :focus-visible {
+  outline-color: rgba(212, 5, 17, 0.55);
+}
+
+/* Feed entries */
+.light .feed-entry:hover {
+  background: rgba(212, 5, 17, 0.04);
+}
+
+/* ── Light Mode Sidebar — Neutral white with DHL red accent ─────────────── */
+
+.light .sidebar-nav-item {
+  color: #555555;
+}
+.light .sidebar-nav-item:hover {
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
+}
+.light .sidebar-nav-item--active {
+  color: #1a1a1a;
+  font-weight: 600;
+  background: rgba(212, 5, 17, 0.08);
+  border-color: rgba(212, 5, 17, 0.18);
+}
+.light .sidebar-nav-item--active::before {
+  background: #D40511;
+  box-shadow: 0 0 8px rgba(212, 5, 17, 0.40);
+}
+.light .sidebar-nav-item--active .sidebar-nav-icon {
+  color: #D40511;
+}
+.light .sidebar-section-label {
+  color: #888888;
+}
+
+/* Glow utilities — subtler in light */
+.light .glow-cyan  { box-shadow: 0 0 16px rgba(204, 153, 0, 0.14); }
+.light .glow-red   { box-shadow: 0 0 16px rgba(212, 5, 17, 0.14); }
+.light .glow-amber { box-shadow: 0 0 16px rgba(184, 134, 11, 0.10); }
+
+/* Loading shimmer */
+.light .loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    #EEEEEE 0%,
+    #FFFFFF 50%,
+    #EEEEEE 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Status dots — keep semantic colors, reduce glow */
+.light .status-dot--live    { box-shadow: 0 0 4px rgba(22, 163, 74, 0.45); }
+.light .status-dot--warning { box-shadow: 0 0 4px rgba(255, 170, 0, 0.35); }
+.light .status-dot--critical { box-shadow: 0 0 4px rgba(212, 5, 17, 0.45); }
+
+/* Data flow line */
+.light .data-flow-line {
+  background: linear-gradient(90deg, transparent, var(--nexus-red), transparent);
+  background-size: 200% 100%;
+}
+
+/* Confidence ring */
+.light .confidence-ring__track {
+  stroke: var(--nexus-border-bright);
+}
+
+/* Section indicator and title — use red in light mode for strong DHL feel */
+.light .nexus-section-indicator {
+  background: var(--nexus-red);
+  box-shadow: 0 0 6px rgba(212, 5, 17, 0.45);
+}
+.light .nexus-section-title {
+  color: var(--nexus-red);
+}
+
+/* Border glow */
+.light .nexus-border-glow { box-shadow: 0 0 20px rgba(212, 5, 17, 0.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

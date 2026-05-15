@@ -1,0 +1,90 @@
+
+# ── Secrets & credentials ────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+!backend/.env.example
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+backend-run.log
+frontend-run.log
+ml-service/uvicorn*.log
+
+# ── Node ─────────────────────────────────────────────────────────────────────
+node_modules/
+.node_modules
+backend/node_modules/
+frontend/node_modules/
+
+# ── Python ───────────────────────────────────────────────────────────────────
+ml-service/venv/
+ml-service/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+
+# ── ML artefacts (large / generated) ─────────────────────────────────────────
+ml-service/models/
+ml-service/data/
+ml-service/*.csv
+ml-service/*.png
+ml-service/embed*.json
+ml-service/live-classify.json
+ml-service/review-classify.json
+ml-service/t1.json
+ml-service/t2.json
+ml-service/training_info.json
+
+# ── Dev / test scripts ────────────────────────────────────────────────────────
+ml-service/test*.py
+ml-service/create_save.py
+ml-service/save_training_data.py
+ml-service/generate_csv.py
+ml-service/scripts/
+testDb.js
+backend/find_admin.mjs
+backend/login-body.json
+backend/test-*.js
+
+# ── Runtime artefacts ────────────────────────────────────────────────────────
+backend/backend.err
+backend/uploads/
+
+# ── Session cookies ───────────────────────────────────────────────────────────
+backend/cookies.txt
+backend/cookies-ml.txt
+cookies.txt
+
+# ── Sensitive / AI instructions (never commit) ────────────────────────────────
+.claude/
+frontend/.claude/
+PLAN.md
+Integration_Guide.md
+AGENTS.md
+
+# ── UiPath (contains hardcoded credentials) ──────────────────────────────────
+uipath/
+
+# ── Misc build artefacts ──────────────────────────────────────────────────────
+scripts/
+tmp/
+dist/
+.github/
+docs/
+*.exe
+*.bcmap
+*.ts
+site-packages
+context.md
+
+# ── Competition docs (never commit) ──────────────────────────────────────────
+NEXUS_Report.md
+NEXUS_Report_Final.md
+DEMO_FLOW.md
+DEMO_SCRIPT.md
+DEPLOY.md
+Problem_Statement_Requirements.md
+*.docx
+
+PRD.md
