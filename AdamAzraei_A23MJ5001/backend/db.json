@@ -1,0 +1,59 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "Handling Damaged Parcels",
+      "summary": "Steps to process a damaged package report from Telegram.",
+      "content": "1. Request photo evidence... 2. Log in system...",
+      "status": "Published",
+      "tags": [
+        "Damage",
+        "SOP"
+      ],
+      "creator": "admin_john",
+      "dateCreated": "2026-04-18"
+    },
+    {
+      "title": "Damage_package_101",
+      "content": "Shattered glass",
+      "summary": "Awaiting AI Summary...",
+      "status": "Draft",
+      "creator": "admin_user",
+      "dateCreated": "2026-05-04",
+      "tags": [
+        "RPA",
+        "Auto-Draft"
+      ],
+      "attachedFile": "Damage_package_101.txt",
+      "id": "2CT2KIhvlnQ"
+    },
+    {
+      "title": "MIssing_Label_22",
+      "content": "No label can't figure which product it is.",
+      "summary": "Awaiting AI Summary...",
+      "status": "Draft",
+      "creator": "admin_user",
+      "dateCreated": "2026-05-04",
+      "tags": [
+        "RPA",
+        "Auto-Draft"
+      ],
+      "attachedFile": "MIssing_Label_22.txt",
+      "id": "LlK0pomj4fk"
+    },
+    {
+      "title": "Test",
+      "content": "test",
+      "summary": "Awaiting AI Summary...",
+      "status": "Draft",
+      "creator": "admin_user",
+      "dateCreated": "2026-05-04",
+      "tags": [
+        "test"
+      ],
+      "attachedFile": null,
+      "id": "OhslsZZm2F4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
