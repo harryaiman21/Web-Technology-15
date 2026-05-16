@@ -1,0 +1,5 @@
+Customer email dated 5 May requesting urgent address change for shipment MY44567789. Original address was residential in Shah Alam, new address communicated via email is customer’s office in PJ. Email subject reads: “PLEASE UPDATE DELIVERY ADDRESS ASAP”.
+System shows address update was never applied. Parcel delivered to old address on 6 May and signed by unknown person. WhatsApp message from recipient says, “I already told agent yesterday to change address, why still sent there???”
+Phone log from support agent indicates a call on 5 May where agent noted “address change requested – escalate to ops”. No ticket was created.
+Warehouse handwritten note: “Address updated verbally?? Not in system.”
+Customer now claims parcel missing and DHL responsible. Customer also asks why email was ignored. Data spread across email, WhatsApp, call notes, and physical handwritten notes.

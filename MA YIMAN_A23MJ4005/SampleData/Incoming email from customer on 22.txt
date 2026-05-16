@@ -1,0 +1,9 @@
+Incoming email from customer on 22 March with subject: “Damaged parcel received – unacceptable condition”. 
+
+Customer attaches 4 images showing a crushed DHL box, torn side panels, and bubble wrap exposed. Product inside appears to be a coffee machine (customer did not confirm brand).
+
+Email body states shipment MY987623400 arrived two days late and external box was already damaged when handed over. Customer did not reject delivery because courier mentioned “cannot take back once scanned”. After opening the box, customer noticed water leakage marks and dents on the machine casing.
+Internal Teams chat between delivery partner and hub supervisor mentions: “Package already dented when offloaded from linehaul, maybe stacking issue.” Another message says, “No exception scanned at hub, driver might have forgotten.”
+Call center notes say customer demanded replacement or refund and is threatening to post photos on social media. Agent marked case as “damage – investigation needed” but forgot to tag the insurance/claims team.
+Handwritten warehouse remark uploaded later reads: “Inbound pallet unstable, one carton collapsed, taped back.” No pallet ID referenced.
+Issue involves late delivery, damaged item, missing exception scan, and complaint escalation. Multiple teams involved but no clear timeline or responsible department. Priority unclear.
