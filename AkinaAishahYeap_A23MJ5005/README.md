@@ -107,7 +107,7 @@ npm run dev
 ```
 Frontend runs on:
 ```text
-http://localhost:5173
+http://localhost:5174
 ```
 
 # UiPath Automation
