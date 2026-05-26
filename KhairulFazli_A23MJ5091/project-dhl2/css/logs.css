@@ -1,0 +1,538 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background */
+body{
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #1e1e2f,
+        #3b1f5c,
+        #6a1b9a
+    );
+
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+
+    padding-bottom: 100px;
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+
+}
+
+/* Title */
+h1{
+    text-align: center;
+
+    padding-top: 40px;
+
+    color: white;
+
+    font-size: 42px;
+
+    animation: fadeIn 0.8s ease;
+}
+
+/* Bottom Navigation */
+.divbanner{
+    width: 100%;
+    height: 70px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border-top: 1px solid rgba(255,255,255,0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    z-index: 100;
+}
+
+.divbanner button{
+
+    background: rgba(255,255,255,0.08);
+
+    color: rgb(235, 185, 255);
+
+    border: none;
+
+    padding: 20px;
+
+    width: 200px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.divbanner button:hover{
+
+    background: rgba(255,255,255,0.15);
+
+    color: white;
+
+    cursor: pointer;
+}
+
+/* Logout */
+.divlogout button{
+    background: rgb(255, 79, 79);
+
+    color: white;
+
+    padding: 12px 23px;
+
+    width: 102px;
+
+    border: none;
+
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    position: fixed;
+
+    right: 30px;
+    bottom: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.divlogout button:hover{
+    background: red;
+    transform: scale(1.05);
+}
+
+/* Function Bar */
+.divfunction{
+
+    display: flex;
+
+    width: 90%;
+
+    margin: 30px auto;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+}
+
+/* Search */
+.divsearch{
+
+    display: flex;
+
+    width: 75%;
+}
+
+.divsearch input{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 15px 0 0 15px;
+
+    background: rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(10px);
+
+    color: white;
+
+    font-size: 16px;
+}
+
+.divsearch input::placeholder{
+    color: rgba(255,255,255,0.6);
+}
+
+.divsearch input:focus{
+    outline: 1px solid rgba(255,255,255,0.3);
+}
+
+.divsearch button{
+
+    background: rgba(182, 69, 224, 0.8);
+
+    color: white;
+
+    border: none;
+
+    padding: 0 24px;
+
+    font-size: 18px;
+
+    border-radius: 0 15px 15px 0;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.divsearch button:hover{
+
+    background: rgba(207, 115, 240, 1);
+}
+
+/* Filter & Sort */
+.divfilter,
+.divsort{
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    width: 50px;
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    transition: 0.3s;
+}
+
+.divfilter:hover,
+.divsort:hover{
+
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.15);
+
+    transform: translateY(-2px);
+}
+
+.divfilter img,
+.divsort img{
+
+    width: 24px;
+    height: 24px;
+}
+
+/* =========================
+   DIALOG
+========================= */
+.dialog{
+
+    position: fixed;
+
+    top: 100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 650px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    padding: 35px;
+
+    background: rgba(35,35,50,0.95);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 4px 25px rgba(0,0,0,0.4);
+}
+
+.dialog::backdrop{
+
+    background:
+        rgba(0,0,0,0.5);
+}
+
+.dialog form{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.dialog p{
+
+    color: white;
+
+    width: 100%;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+.dialog .filtergroup{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.dialog label{
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    margin-left: 5px;
+}
+
+.dialog select{
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.dialog select:hover{
+
+    background:
+        rgba(255,255,255,0.15);
+}
+
+.dialog select:focus{
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px rgba(80,141,255,0.5);
+}
+
+.dialog option{
+
+    background: rgb(35,35,50);
+
+    color: white;
+}
+
+.dialog .dialogbuttons{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 10px;
+}
+
+.dialog .cancelbutton,
+.dialog .showbutton{
+
+    width: 130px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.dialog .cancelbutton{
+    background:rgb(255,79,79);
+}
+
+.dialog .cancelbutton:hover{
+    background: red;
+    transform: scale(1.03);
+}
+
+.dialog .showbutton{
+    background: rgb(80,141,255);
+}
+
+.dialog .showbutton:hover{
+    background: rgb(0,123,255);
+    transform: scale(1.03);
+}
+
+.divline{
+    width: 90%;
+    margin: 0 auto;
+    border: 2px solid #6a1b9a;
+}
+
+/* Table */
+.divcontent{
+    width: 90%;
+    margin: 30px auto;
+}
+
+.divtable{
+
+    width: 1000px;
+
+    border-collapse: collapse;
+
+    overflow: hidden;
+
+    margin: 30px 20px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+    animation: fadeIn 0.8s ease;
+}
+
+/* Cells */
+.divtable th,
+.divtable td{
+
+    padding: 16px;
+
+    text-align: start;
+
+    vertical-align: top;
+
+    color: white;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    cursor: default;
+}
+
+/* Header Cells */
+.divtable th{
+    background: rgba(255,255,255,0.08);
+
+    color: rgb(235, 185, 255);
+
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.divtable td{
+    width: 350px;
+}
+
+/* ID Column */
+.divtable .columnid{
+
+    width: 80px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: rgba(182, 69, 224, 0.4);
+
+    border-right: 3px solid rgba(255,255,255,0.2);
+
+    cursor: pointer;
+}
+
+.divtable .columnid:hover{
+    background: rgba(182, 69, 224, 0.6);
+}
+
+/* Description */
+.divtable .description{
+
+    padding: 25px 16px;
+
+    line-height: 1.6;
+}
+
+/* Hover */
+.divtable tr:hover{
+    background: rgba(255,255,255,0.04);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

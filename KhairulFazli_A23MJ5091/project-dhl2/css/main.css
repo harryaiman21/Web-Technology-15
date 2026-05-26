@@ -1,0 +1,251 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background */
+.divbackground{
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #1e1e2f,
+        #3b1f5c,
+        #6a1b9a
+    );
+
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+
+    padding: 40px;
+}
+
+@keyframes gradientMove{
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+/* Dashboard */
+.divdashboard{
+    width: 90%;
+    margin: auto;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgba(207, 115, 240, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 4px 20px rgba(207, 115, 240, 0.4);
+
+    text-align: center;
+
+    animation: fadeIn 0.8s ease;
+}
+
+.divdashboard h1{
+    color: white;
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+
+.welcome{
+    color: rgb(235, 185, 255);
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+/* Dashboard Stats */
+.dashboardStats{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.statCard{
+    width: 220px;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    transition: 0.3s;
+}
+
+.statCard:hover{
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.12);
+}
+
+.statCard h2{
+    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.statCard p{
+    color: rgb(235, 185, 255);
+    font-weight: bold;
+}
+
+/* Action Section */
+.divactions{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+
+    margin-top: 60px;
+}
+
+/* Cards */
+.divListing,
+.divUpload{
+    width: 350px;
+
+    background: rgba(207, 115, 240, 0.2);
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(207, 115, 240, 1);
+
+    box-shadow: 0 4px 20px rgba(207, 115, 240, 0.3);
+
+    backdrop-filter: blur(10px);
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.divListing:hover,
+.divUpload:hover{
+    transform: translateY(-8px);
+}
+
+/* Buttons */
+.divListing button,
+.divUpload button{
+    background: none;
+
+    color: white;
+
+    border: none;
+
+    padding: 40px 20px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    width: 100%;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.divListing button:hover,
+.divUpload button:hover{
+    background: rgba(255,255,255,0.08);
+}
+
+/* Descriptions */
+.divListing p,
+.divUpload p{
+    text-align: center;
+
+    color: rgb(235, 185, 255);
+
+    padding: 15px;
+
+    background: rgba(0,0,0,0.15);
+}
+
+/* Logout */
+.divlogout button{
+    background: rgb(255, 79, 79);
+
+    color: white;
+
+    padding: 12px 23px;
+
+    width: 102px;
+
+    border: none;
+
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    position: fixed;
+
+    right: 30px;
+    bottom: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.divlogout button:hover{
+    background: red;
+    transform: scale(1.05);
+}
+
+/* Table */
+.divtable{
+    width: 90%;
+
+    padding: 20px;
+
+    margin: 50px auto;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

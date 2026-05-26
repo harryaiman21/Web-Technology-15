@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/logs.css">
+    </head>
+    <body>
+        <div class="divbanner">
+            <button onclick="location.href='main.html'">Main</button>
+            <button onclick="location.href='upload.html'">Upload</button>
+            <div class="divlogout">
+                <button onclick="location.href='login.html'">Log Out</button>
+            </div>
+        </div>
+
+        <h1>Incident Logging</h1>
+
+        <div class="divfunction">
+            <div class="divsearch">
+                <input type="text" id="searchInput" placeholder="Search incidents..." oninput="JSSearch()"> <!--Search all categories containing input field string-->
+                <button onclick="JSSearch()">🔍︎</button>
+            </div>
+            <div class="divfilter" onclick="JSFilter()">
+                <img src="../resource/filter.png" alt="Filter"> <!--JS Prompt to show/hide table categories-->
+                <dialog class="dialog" id="filterDialog">
+                    <form method="dialog">
+                        <p>Filter Incidents</p>
+                        
+                        <div class="filtergroup">
+                            <label>Tag</label>
+                            <select id="filterTag">
+                                <option value="">All Tags</option>
+                            </select>
+                        </div>
+
+                        <div class="filtergroup">
+                            <label>Year</label>
+                            <select id="filterDate">
+                                <option value="">All Years</option>
+                            </select>
+                        </div>
+
+                        <div class="filtergroup">
+                            <label>Creator</label>
+                            <select id="filterCreator">
+                                <option value="">All Creators</option>
+                            </select>
+                        </div>
+
+                        <div class="filtergroup">
+                            <label>Status</label>
+                            <select id="filterStatus">
+                                <option value="">All Status</option>
+                                <option value="Draft">Draft</option>
+                                <option value="Reviewed">Reviewed</option>
+                                <option value="Published">Published</option>
+                            </select>
+                        </div>
+
+                        <div class="dialogbuttons">
+                            <button class="cancelbutton">Cancel</button>
+                            <button class="showbutton">Show</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+            <div class="divsort" onclick="JSSort()">
+                <img src="../resource/sortDESCEND.png" alt="Sort"> <!--Arrange in order (ascending/descending), change toSortASCEND.png once toggled and likewise-->
+            </div>
+        </div>
+
+        <div class="divline"></div>
+        <div class="divcontent"></div>
+    </body>
+
+    <script src="../api/logsAPI.js"></script>
+    <script>
+        function tableLoaderAll(incidents){
+            const content = document.querySelector('.divcontent');
+
+            content.innerHTML = '';
+            incidents.forEach(incident => {
+
+                const rowHTML = `
+                <table class="divtable">
+                    <tr>
+                        <th rowspan="4" class="columnid">${incident.id}</th>
+                        <th>Creator</th>
+                        <td colspan="3">${incident.creator}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Date</th>
+                        <td>${incident.date}</td>
+                        <th>Status</th>
+                        <td>${incident.status}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Description</th>
+                        <td colspan="4">${incident.description}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Tag</th>
+                        <td colspan="3">${incident.tag}</td>
+                    </tr>
+                </table>
+                `;
+
+                content.innerHTML += rowHTML;
+            });
+        }
+        
+        async function loadRecords(){
+            const incidents = await getRecords();
+
+            tableLoaderAll(incidents);
+            attachIncidentListener();
+        }
+
+        window.addEventListener('DOMContentLoaded', loadRecords);
+    </script>
+
+    <script>
+        async function JSSearch(){
+            const input = document.getElementById('searchInput').value;
+            const incidents = await getRecords();
+            const searchResult = incidents.filter(incident => {
+                return(
+                    incident.id.toString().toLowerCase().includes(input) ||
+                    incident.creator.toLowerCase().includes(input) ||
+                    incident.date.toLowerCase().includes(input) ||
+                    incident.status.toLowerCase().includes(input) ||
+                    incident.description.toLowerCase().includes(input) ||
+                    incident.tag.toLowerCase().includes(input)
+                );
+            });
+            
+            tableLoaderAll(searchResult);
+            attachIncidentListener();
+        }
+
+        //------------------------------------------------------------------------------
+        let allIncidents = [];
+        async function JSFilter(){
+            const dialog = document.getElementById('filterDialog');
+            const showButton = document.querySelector('.showbutton');
+
+            if(dialog.dataset.loaded === "true"){
+                dialog.showModal();
+                return;
+            }
+
+            dialog.dataset.loaded = "true";
+
+            allIncidents = await getRecords();
+
+            const tagSelect = document.getElementById('filterTag');
+            const dateSelect = document.getElementById('filterDate');
+            const creatorSelect = document.getElementById('filterCreator');
+            const statusSelect = document.getElementById('filterStatus');
+
+            const tags =
+                [...new Set(
+                    allIncidents.map(
+                        incident =>
+                        incident.tag
+                    )
+                )];
+
+            const years =
+                [...new Set(
+                    allIncidents.map(
+                        incident =>
+
+                        new Date(
+                            incident.date
+                        ).getFullYear()
+                    )
+                )];
+
+            const creators =
+                [...new Set(
+                    allIncidents.map(
+                        incident =>
+                        incident.creator
+                    )
+                )];
+
+
+            tags.forEach(tag => {
+                const option = document.createElement('option');
+                option.value = tag;
+                option.textContent = tag;
+
+                tagSelect.appendChild(option);
+            });
+
+            years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+
+                dateSelect.appendChild(option);
+            });
+
+            creators.forEach(creator => {
+                const option = document.createElement('option');
+                option.value = creator;
+                option.textContent = creator;
+
+                creatorSelect.appendChild(option);
+            });
+
+            dialog.showModal();
+
+
+            showButton.addEventListener('click', function(){
+                const filters = {
+                    tag: tagSelect.value,
+                    year: dateSelect.value,
+                    creator: creatorSelect.value,
+                    status: document.getElementById('filterStatus').value
+                };
+
+                const filterResult = allIncidents.filter(incident => {
+                    const tagMatch = !filters.tag || incident.tag === filters.tag;
+                    const yearMatch = !filters.year || new Date(incident.date).getFullYear().toString() === filters.year;
+                    const creatorMatch =!filters.creator || incident.creator === filters.creator;
+                    const statusMatch = !filters.status || incident.status === filters.status;
+
+                    return (tagMatch && yearMatch && creatorMatch && statusMatch);
+                });
+
+                tableLoaderAll(filterResult);
+                attachIncidentListener();
+                dialog.close();
+
+                const searchInput = document.getElementById('searchInput');
+                searchInput.value = '';
+
+                tagSelect.value = '';
+                dateSelect.value = '';
+                creatorSelect.value = '';
+                statusSelect.value = '';
+            });
+        }
+
+        //----------------------------------------------------------------------------------
+        let ascending = true;
+        async function JSSort(){
+            const button = document.querySelector('.divsort img');
+            const incidents = await getRecords();
+
+            incidents.sort((a, b) => {
+                if(ascending){
+                    return a.id - b.id;
+                }
+                else{
+                    return b.id - a.id;
+                }
+            });
+
+            tableLoaderAll(incidents);
+            attachIncidentListener();
+
+            ascending = !ascending;
+            if(ascending){
+                button.src = "../resource/sortASCEND.png";
+            }
+            else{
+                button.src = "../resource/sortDESCEND.png";
+            }
+        }
+    </script>
+</html>

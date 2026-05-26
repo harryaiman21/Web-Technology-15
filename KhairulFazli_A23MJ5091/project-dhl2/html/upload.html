@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/upload.css">
+    </head>
+
+    <body>
+        <div class="divbanner">
+            <button onclick="location.href='main.html'">Main</button>
+            <button onclick="location.href='logs.html'">Logs</button>
+            <div class="divlogout">
+                <button onclick="location.href='login.html'">Log Out</button>
+            </div>
+
+        </div>
+
+        <div class="divbackground">
+            <div class="divupload">
+                <h1>Upload Incident</h1>
+                <p class="uploadDesc">Submit incident evidence or report files</p>
+
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <label for="incidentFile" class="fileLabel">Choose Incident File</label>
+                    <input type="file" id="incidentFile" name="file" accept=".txt" required>
+
+                    <div id="fileName">No file selected</div>
+
+                    <button type="submit">Submit Report</button>
+                </form>
+
+                <p id="uploadStatus"></p>
+            </div>
+        </div>
+    </body>
+
+    <script src="../api/uploadAPI.js"></script>
+    <script>
+        const fileInput = document.getElementById('incidentFile');
+        const fileName = document.getElementById('fileName');
+        const uploadForm = document.getElementById('uploadForm');
+        const uploadStatus = document.getElementById('uploadStatus');
+
+        // Display selected file name
+        fileInput.addEventListener('change', () => {
+            if(fileInput.files.length > 0){
+                fileName.textContent = fileInput.files[0].name;
+            }
+            else{
+                fileName.textContent = "No file selected";
+            }
+        });
+
+        // Upload function
+        uploadForm.addEventListener('submit', async function(e){
+            e.preventDefault();
+
+            const file = fileInput.files[0];
+            if(!file){
+                uploadStatus.textContent = "Please select a file.";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            if(!file.name.endsWith('.txt')){
+                uploadStatus.textContent = "Only .txt files allowed.";
+                uploadStatus.style.color = 'red';
+                return;
+            }
+
+            try{
+                uploadStatus.textContent = "Uploading...";
+
+                const fileText = await file.text();
+                await createRecord(fileText);
+
+                uploadStatus.textContent = "File upload successful.";
+                uploadStatus.style.color = '#7CFC00';
+                uploadForm.reset();
+
+                fileName.textContent = 'No file selected';
+            }
+
+            catch(error){
+                uploadStatus.textContent = 'File failed to upload.';
+                uploadStatus.style.color = 'red';
+
+                console.error(error);
+            }
+        });
+    </script>
+</html>

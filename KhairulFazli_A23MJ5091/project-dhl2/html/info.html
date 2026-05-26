@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/info.css">
+    </head>
+    
+    <body>
+        <div class="divback" onclick="location.href='logs.html'">
+            <img src="../resource/back.png" alt="Back">
+            <p>Back</p>
+        </div>
+
+        <h1>Report Information</h1>
+
+        <div class="divinfo">
+            <div class="divstatus"></div>
+            <table></table>
+        </div>
+
+        <button class="editbutton" onclick="JSEdit()">Edit</button>
+        <button class="deletebutton" onclick="JSDelete()">Delete</button>
+        <button class="cancelbutton">Cancel</button>
+        <button class="confirmbutton">Confirm</button>
+    </body>
+
+    <script src="../api/infoAPI.js"></script>
+    <script>
+        async function infoLoader(incident){
+            const info = document.querySelector('.divinfo');
+            const statusInfo = document.querySelector('.divstatus');
+
+            statusInfo.innerHTML = `
+                <select id="statusInput" value=${incident.status} disabled>
+                    <option value="Draft" ${incident.status === 'Draft' ? 'selected' : ''}>Draft</option>
+                    <option value="Reviewed" ${incident.status === 'Reviewed' ? 'selected' : ''}>Reviewed</option>
+                    <option value="Published" ${incident.status === 'Published' ? 'selected' : ''}>Published</option>
+                </select>
+            `;
+            info.innerHTML += `
+                <h2>Incident #${incident.id}</h2>
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <td><input id="idInput" value=${incident.id} readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Creator</th>
+                        <td><input id="creatorInput" value=${incident.creator} readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td><input id="dateInput" value=${incident.date} readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Department</th>
+                        <td><input id="departmentInput" value=${incident.department} readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Channel</th>
+                        <td>
+                            <select id="channelInput" value=${incident.channel} disabled>
+                                <option value="Email" ${incident.channel === 'Email' ? 'selected': ''}>Email</option>
+                                <option value="Chat messages" ${incident.channel === 'Chat messages' ? 'selected': ''}>Chat messages</option>
+                                <option value="Phone calls" ${incident.channel === 'Phone calls' ? 'selected': ''}>Phone calls</option>
+                                <option value="Images and screenshots" ${incident.channel === 'Images and screenshots' ? 'selected': ''}>Images and screenshots</option>
+                                <option value="Handwritten instructions" ${incident.channel === 'Handwritten instructions' ? 'selected': ''}>Handwritten instructions</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tag</th>
+                        <td><input id="tagInput" value=${incident.tag} readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td><textarea id="descriptionInput" readonly>${incident.description}</textarea></td>
+                    </tr>
+                </table>
+            `;
+        }
+
+        async function loadRecord(){
+            const incident = await getRecord();
+            infoLoader(incident);
+        }
+        
+        window.addEventListener('DOMContentLoaded', loadRecord);
+    </script>
+    
+    <script>
+        function JSEdit(){
+            const editableInputs = document.querySelectorAll('.divinfo input');
+            const editableSelects = document.querySelectorAll('.divinfo select');
+
+            const editButton = document.querySelector('.editbutton');
+            editButton.style.display = 'none';
+
+            const deleteButton = document.querySelector('.deletebutton');
+            deleteButton.style.display = 'none';
+
+            const cancelButton = document.querySelector('.cancelbutton');
+            cancelButton.style.display = 'block';
+
+            const confirmButton = document.querySelector('.confirmbutton');
+            confirmButton.style.display = 'block';
+
+            editableInputs.forEach(editableInput => {
+                if(editableInput.id !== 'idInput' && editableInput.id !== 'descriptionInput' && editableInput.id !== 'creatorInput'){
+                    editableInput.readOnly = false;
+                    editableInput.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                    editableInput.style.cursor = 'pointer';
+                    editableInput.style.opacity = 1;
+                }
+            });
+
+            editableSelects.forEach(editableSelect => {
+                editableSelect.disabled = false;
+                editableSelect.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                editableSelect.style.cursor = 'pointer';
+                editableSelect.style.opacity = 1;
+            })
+
+            confirmButton.onclick = async function(){
+
+                const updateData = {
+                    status: document.getElementById('statusInput').value,
+                    creator: document.getElementById('creatorInput').value,
+                    date: document.getElementById('dateInput').value,
+                    department: document.getElementById('departmentInput').value,
+                    channel: document.getElementById('channelInput').value,
+                    tag: document.getElementById('tagInput').value
+                };
+
+                const incidentId = document.getElementById('idInput').value;
+                const incidentUpdate = await updateRecord(incidentId, updateData);
+
+                editableInputs.forEach(editableInput => {
+                    editableInput.readOnly = true;
+                    editableInput.style.backgroundColor = '';
+                    editableInput.style.cursor = '';
+                    editableInput.style.opacity = '';
+                });
+
+                editableSelects.forEach(editableSelect => {
+                    editableSelect.disabled = true;
+                    editableSelect.style.backgroundColor = '';
+                    editableSelect.style.cursor = '';
+                    editableSelect.style.opacity = '';
+                });
+
+                console.log('incidentUpdate');
+            };
+
+            cancelButton.onclick = async function(){
+                alert('Exit editing mode.');
+
+                const originalData = await getRecord();
+
+                document.getElementById('statusInput').value = originalData.status;
+                document.getElementById('creatorInput').value = originalData.creator;
+                document.getElementById('dateInput').value = originalData.date;
+                document.getElementById('departmentInput').value = originalData.department;
+                document.getElementById('channelInput').value = originalData.channel;
+                document.getElementById('tagInput').value = originalData.tag;
+
+                editableInputs.forEach(editableInput => {
+                    editableInput.readOnly = true;
+                    editableInput.style.backgroundColor = '';
+                    editableInput.style.cursor = '';
+                });
+
+                editableSelects.forEach(editableSelect => {
+                    editableSelect.disabled = true;
+                    editableSelect.style.backgroundColor = '';
+                    editableSelect.style.cursor = '';
+                    editableSelect.style.opacity = '';
+                });
+
+                cancelButton.style.display = 'none';
+                confirmButton.style.display = 'none';
+                editButton.style.display = 'block';
+                deleteButton.style.display = 'block';
+            }
+        }
+
+        async function JSDelete(){
+            const deleteButton = document.querySelector('.deletebutton');
+
+            const incidentId = document.getElementById('idInput').value;
+            const confirmation = confirm(`Delete Incident #${incidentId}?`);
+
+            if(confirmation){
+                await deleteRecord(incidentId);
+                localStorage.removeItem('incidentInfo');
+            }
+        }
+    </script>
+</html>

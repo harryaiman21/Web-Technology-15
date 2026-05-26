@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+    <body>
+        <div class="divbackground">
+
+            <div class="divdashboard">
+                <h1>Incident Reporting System</h1>
+                <p class="welcome">Welcome back, </p>
+                <div class="dashboardStats">
+                    <div class="statCard" id="statTotal"></div>
+                    <div class="statCard" id="statDraft"></div>
+                    <div class="statCard" id="statReviewed"></div>
+                    <div class="statCard" id="statResolved"></div>
+                </div>
+            </div>
+
+            <div class="divactions">
+                <div class="divListing">
+                    <button onclick="location.href='logs.html'">View Listing</button>
+                    <p>View all incident records</p>
+                </div>
+                <div class="divUpload">
+                    <button onclick="location.href='upload.html'">Upload Incident</button>
+                    <p>File a new incident report</p>
+                </div>
+            </div>
+
+            <div class="divlogout">
+                <button onclick="location.href='login.html'">Log Out</button>
+            </div>
+        </div>
+    </body>
+
+    <script src="../api/mainAPI.js"></script>
+    <script>
+        async function dashboardData(){
+            try{
+                const incidents = await getRecords();
+                const totalIncidents = document.querySelector('#statTotal');
+                const draftIncidents = document.querySelector('#statDraft');
+                const reviewedIncidents = document.querySelector('#statReviewed');
+                const resolvedIncidents = document.querySelector('#statResolved');
+
+                const totalCount = incidents.length;
+                const draftCount = incidents.filter(incident => incident.status === 'Draft').length;
+                const reviewedCount = incidents.filter(incident => incident.status === 'Reviewed').length;
+                const resolvedCount = incidents.filter(incident => incident.status === 'Published').length;
+
+                totalIncidents.innerHTML = `
+                    <h2>${totalCount}</h2>
+                    <p>Total Incidents</p>`;
+
+                draftIncidents.innerHTML = `
+                    <h2>${draftCount}</h2>
+                    <p>Pending</p>`;
+
+                reviewedIncidents.innerHTML = `
+                    <h2>${reviewedCount}</h2>
+                    <p>Reviewed</p>`;
+
+                resolvedIncidents.innerHTML = `
+                    <h2>${resolvedCount}</h2>
+                    <p>Resolved</h2>`;
+            }
+
+            catch(error){
+                console.error(error);
+                alert('Unable to retrieve dashboard data.');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', dashboardData);
+    </script>
+</html>

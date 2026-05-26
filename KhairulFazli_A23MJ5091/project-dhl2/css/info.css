@@ -1,0 +1,339 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #1e1e2f,
+        #3b1f5c,
+        #6a1b9a
+    );
+
+    background-size: 300% 300%;
+
+    animation: gradientMove 10s ease infinite;
+
+    padding: 40px;
+}
+
+/* Background Animation */
+@keyframes gradientMove{
+
+    0%{
+        background-position: 0% 50%;
+    }
+
+    50%{
+        background-position: 100% 50%;
+    }
+
+    100%{
+        background-position: 0% 50%;
+    }
+
+}
+
+/* Title */
+h1{
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 42px;
+
+    margin-bottom: 40px;
+
+    animation: fadeIn 0.8s ease;
+}
+
+/* Back Button */
+.divback{
+
+    position: fixed;
+
+    top: 25px;
+    left: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    color: white;
+
+    transition: 0.3s;
+
+    z-index: 100;
+}
+
+.divback:hover{
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.15);
+
+    transform: translateY(-2px);
+}
+
+.divback p{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.divback img{
+    width: 20px;
+    height: 20px;
+}
+
+/* Information Card */
+.divinfo{
+    width: 50%;
+
+    margin: auto;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+
+    color: white;
+
+    animation: fadeIn 0.8s ease;
+
+    position: relative;
+}
+
+.divinfo h2{
+    color: rgb(235, 185, 255);
+    border-bottom: 5px solid #b33dfc;
+
+    margin-bottom: 25px;
+
+    font-size: 28px;
+}
+
+.divinfo textarea{
+    width: 100%;
+
+    min-height: 180px;
+
+    resize: vertical;
+
+    overflow-y: auto;
+
+    white-space: pre-wrap;
+
+    word-wrap: break-word;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 1.6;
+
+    padding: 12px;
+
+    background: none;
+
+    border: none;
+
+    border-radius: 20px;
+
+    color: rgb(235, 185, 255);
+
+    font-size: 16px;
+
+    opacity: 0.6;
+}
+
+.divinfo textarea::-webkit-scrollbar{
+    display: none;
+}
+
+.divinfo input, .divinfo select{
+    width: 100%;
+    background: none;
+    border: none;
+    border-radius: 20px;
+    color: rgb(235, 185, 255);
+    font-size: 16px;
+    padding: 4px;
+    padding-left: 10px;
+    appearance: none;
+    opacity: 0.6;
+}
+
+.divinfo input:focus, .divinfo select:focus, .divinfo textarea:focus{
+    outline: none;
+}
+
+.divinfo .divstatus select{
+    color: rgb(235, 185, 255);
+    background-color: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    width: 100px;
+    padding: 2px 0;
+    position: absolute;
+    top: 5%;
+    left: 80%;
+    text-align: center;
+}
+
+.divinfo .divstatus select:hover{
+    background-color: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.divinfo table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.divinfo th,
+.divinfo td{
+    padding: 18px;
+    text-align: left;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.divinfo th{
+    width: 180px;
+
+    color: rgb(235, 185, 255);
+
+    background: rgba(255,255,255,0.05);
+
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.divinfo td{
+    color: white;
+    line-height: 1.6;
+}
+
+/* Description Area */
+.divinfo .description{
+    padding: 25px 18px;
+    line-height: 1.8;
+}
+
+/* Hover Rows */
+.divinfo tr:hover{
+    background: rgba(255,255,255,0.03);
+}
+
+/* Action Buttons Container */
+.editbutton, .deletebutton, .cancelbutton, .confirmbutton{
+
+    position: fixed;
+
+    bottom: 30px;
+
+    padding: 10px 0;
+
+    width: 100px;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Edit Button */
+.editbutton{
+    right: 260px;
+    background: rgba(80, 141, 255, 0.8);
+    display: block;
+}
+
+.editbutton:hover{
+    background: rgb(0, 123, 255);
+    transform: translateY(-2px);
+}
+
+/* Delete Button */
+.deletebutton{
+    right: 140px;
+    background: rgba(255, 79, 79, 0.85);
+    display: block;
+}
+
+.deletebutton:hover{
+    background: red;
+    transform: translateY(-2px);
+}
+
+/* Cancel Button */
+.cancelbutton{
+    right: 260px;
+    background: rgba(255, 79, 79, 0.85);
+    display: none;
+}
+
+.cancelbutton:hover{
+    background: red;
+    transform: translateY(-2px);
+}
+
+/* Confirm Button */
+.confirmbutton{
+    right: 140px;
+    background: rgba(76, 175, 80, 0.85);
+    display: none;
+}
+
+.confirmbutton:hover{
+    background: rgb(46, 125, 50);
+    transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

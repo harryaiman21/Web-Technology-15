@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "KaiFazli",
+      "password": "040324030801"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "1",
+      "creator": "Kaiyuumaru",
+      "date": "5/19/2025",
+      "status": "Published",
+      "description": "An anomaly appeared and stole my package.",
+      "tag": "Anomaly",
+      "department": "NTE",
+      "channel": "Images and screenshots"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
